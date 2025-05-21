@@ -31,4 +31,19 @@ for grupo in datos["species"].unique():
 
 st.plotly_chart(px.violin(datos, y = "flipper_length_mm", color = "species", box=True, title="Longitud de la aleta por especie"))
 
+datosn = datos.select_dtypes("number")
 
+d_Adelie = datos[datos["species"] == "Adelie"]
+d_Chinstrap = datos[datos["species"] == "Chinstrap"]
+d_Gentoo = datos[datos["species"] == "Gentoo"]
+
+st.plotly_chart(px.imshow(
+    datosn.corr(method='kendall'),
+    text_auto=True,
+    color_continuous_scale='Blues',
+    zmin=-1,
+    zmax=1,
+    title="Mapa de calor de correlacion"
+    ))
+
+st.plotly_chart(px.scatter_matrix(datosn, title="Correlaciones entre variables"))
