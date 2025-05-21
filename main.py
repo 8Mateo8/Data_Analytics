@@ -1,4 +1,1 @@
-# Probando
-# Segunda prueba
-# ---------
-# duewhadsidh
+import numpy as np
